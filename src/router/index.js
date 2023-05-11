@@ -1,6 +1,7 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import SetUp from '../pages/SetUp.vue'
+import RunningSession from '../pages/RunningSession.vue'
 
 const routes = [
   //2 pages: one: create-session, two: running session, redirect to one (create session)
@@ -22,6 +23,11 @@ const routes = [
     /*   },
     ], */
   },
+  {
+    path: '/RunningSession',
+    name: 'RunningSession',
+    component: RunningSession,
+  }
 ]
 
 const router = createRouter({

@@ -18,7 +18,7 @@
         <v-sheet class="d-flex justify-space-between mt-10">
             <v-btn @click="$emit('sessionOverviewCancelled')">BACK</v-btn>
             <v-btn theme="dark" :color="'rgba(31, 115, 221, 1)'"
-            @click="$emit(startSession)">START</v-btn>
+            @click="$emit('startSession')">START</v-btn>
         </v-sheet>
 
     </v-card>
