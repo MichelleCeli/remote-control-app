@@ -1,14 +1,14 @@
 <template>
-    <v-sheet class="mx-auto" item-value="test">
-        <v-list :items="items" @click:select="platformSelected" :mandatory="true"></v-list>
+    <v-sheet class="mx-auto">
+        <v-list :items="platforms" @click:select="platformSelected" :mandatory="true"></v-list>
     </v-sheet>
 </template>
 
 <script>
 export default {
     emits: ['updatePlatform'],
-    data: () => ({
-        test: [],
+    inject: ['platforms'],
+    /* data: () => ({
         items: [
             { type: 'subheader', title: 'Platform:' },
             { type: 'divider' },
@@ -23,10 +23,10 @@ export default {
             },
             { type: 'divider' },
         ],
-    }),
+    }), */
     methods: {
-        platformSelected(item) {
-            this.$emit('updatePlatform', item.id);
+        platformSelected(platform) {
+            this.$emit('updatePlatform', platform.id);
         }
     }
 }

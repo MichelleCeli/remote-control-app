@@ -63,7 +63,7 @@ export default {
     /* display: flex;
     flex-direction: column; */
     top: 20vh;
-    width: 60%;
+    width: 50%;
     height: 60vh;
     margin: 0 auto;
     padding: 2rem;
