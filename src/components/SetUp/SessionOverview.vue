@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-sheet class="d-flex ">
-            <v-img max-width="300" aspect-ratio="16/9" cover src="../assets/scenarios/hund_placeholder.png" class="mr-4"></v-img>
+            <v-img max-width="300" aspect-ratio="16/9" cover src="../../assets/scenarios/hund_placeholder.png" class="mr-4"></v-img>
             <v-sheet>
                 <h3>Description:</h3>
                 <p>{{ scenarioDescription }}</p>

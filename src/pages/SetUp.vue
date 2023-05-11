@@ -13,9 +13,9 @@
 
 
 <script>
-import PatientRegistration from '../components/PatientRegistration.vue'
-import SessionConfiguration from '../components/SessionConfiguration.vue'
-import SessionOverview from '../components/SessionOverview.vue'
+import PatientRegistration from '../components/SetUp/PatientRegistration.vue'
+import SessionConfiguration from '../components/SetUp/SessionConfiguration.vue'
+import SessionOverview from '../components/SetUp/SessionOverview.vue'
 
 export default {
     components: {

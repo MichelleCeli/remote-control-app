@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import PlatformList from './PlatformList.vue';
+import PlatformList from './/PlatformList.vue';
 import ScenarioList from './ScenarioList.vue';
 
 export default {
