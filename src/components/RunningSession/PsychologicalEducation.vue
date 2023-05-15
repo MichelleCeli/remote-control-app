@@ -8,6 +8,13 @@
             <v-btn>change volume</v-btn>
             <v-btn>mic on/off</v-btn>
         </div>
-        <v-btn theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12">SWITCH TO EXPOSURE SCENE</v-btn>
+        <v-btn theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
     </v-container>
 </template>
+
+<script>
+
+export default{
+    emits: ['switchToExposure'],
+}
+</script>

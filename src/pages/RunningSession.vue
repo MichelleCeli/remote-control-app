@@ -6,10 +6,11 @@
            :session-id="sessionId"
            :patient-id="patientId"
            :patient-name="patientName"
-           :scenario-title="scenarioTitle"></session-information>
+           :scenario-title="scenarioTitle"
+           :active-scene="activeScene"></session-information>
         </v-navigation-drawer>
         <v-main style="min-height: 300px;">
-            <SessionView></SessionView>
+            <SessionView :scenario-title="scenarioTitle"></SessionView>
         </v-main>
     </v-layout>
 </template>
@@ -30,7 +31,7 @@ export default{
             patientId: 'patentid',
             patientName: 'patientname',
             scenarioTitle: 'scenarioTitle', */
-            activeScene: ''
+            activeScene: 'psychoeducation'
         }
     }
 }

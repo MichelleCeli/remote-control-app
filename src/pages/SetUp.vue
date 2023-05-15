@@ -92,7 +92,15 @@ export default {
     methods: {
         startSession(sessionId){
             console.log(sessionId);
-            this.$router.push('/RunningSession');
+            this.$router.push({
+                name: 'RunningSession',
+                params: {
+                    sessionId: sessionId,
+                    patientId: this.patient.id,
+                    patientName: this.patient.name,
+                    scenarioTitle: this.sessionSettings.scenarioTitle
+                }
+                });
         },
         registerPatient(id, name) {
             this.patient.id = id;

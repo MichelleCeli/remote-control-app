@@ -1,27 +1,38 @@
 <template>
     <v-container class="d-flex justify-center mt-10">
-        <h2>title part of intervention</h2>
+        <h2>{{ scenarioTitle }}</h2>
     </v-container>
-    <psychological-intervention v-if="sessionState === 'psychological-intervention'"></psychological-intervention>
-    <exposure-scenario v-else-if="sessionState === 'exposure-scenario'"></exposure-scenario>
+    <psychological-education v-if="sessionState === 'psychological-intervention'" @switch-to-exposure="switchScene"></psychological-education>
+    <exposure-scenario v-else-if="sessionState === 'exposure-scenario'" @end-session="switchScene"></exposure-scenario>
     <session-history v-else></session-history>
 
 </template>
 
 <script>
-import PsychologicalIntervention from './PsychologicalEducation.vue'
+import PsychologicalEducation from './PsychologicalEducation.vue'
 import ExposureScenario from './ExposureScenario.vue'
 import SessionHistory from './SessionHistory.vue'
 
 export default {
+    props: ['scenarioTitle'],
     components: {
-        PsychologicalIntervention,
+        PsychologicalEducation,
         ExposureScenario,
         SessionHistory
     },
     data() {
         return {
-            sessionState: 'exposure-scenario'
+            sessionState: 'psychological-intervention'
+        }
+    },
+    methods: {
+        switchScene(){
+            if(this.sessionState === 'psychological-intervention'){
+                this.sessionState = 'exposure-scenario';
+            } 
+            else if (this.sessionState === 'exposure-scenario'){
+                this.sessionState = 'session-history';
+            }
         }
     }
 }

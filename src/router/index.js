@@ -11,9 +11,10 @@ const routes = [
     component: SetUp,
   },
   {
-    path: '/RunningSession',
+    path: '/RunningSession/:sessionId/:patientId/:patientName/:scenarioTitle',
     name: 'RunningSession',
     component: RunningSession,
+    props: true
   }
   //for creating running session front end
   /*  {

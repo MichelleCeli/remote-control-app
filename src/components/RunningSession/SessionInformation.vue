@@ -25,7 +25,7 @@
          <h4>Exposition</h4>
       </div>
 
-      <v-btn theme="dark" class="me-auto mb-10" :color="'rgba(221, 139, 31, 1)'">DISCONNECT</v-btn>
+      <v-btn theme="dark" class="me-auto mb-10" :color="'rgba(221, 139, 31, 1)'" @click="disconnect()">DISCONNECT</v-btn>
 
    </v-container>
 </template>
@@ -37,7 +37,12 @@ export default{
    'patientId', 
    'patientName', 
    'scenarioTitle', 
-   'activeScene']
+   'activeScene'],
+   methods: {
+      disconnect(){
+         this.$router.push('/');
+      }
+   }
 }
 </script>
 

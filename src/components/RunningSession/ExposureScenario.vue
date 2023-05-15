@@ -26,9 +26,9 @@
             <v-col class="d-flex flex-column">
                 <v-btn class="me-auto" v-if="!activityIsRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'"
                     @click="startActivity">START ACTIVITY</v-btn>
-                <v-btn  v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn>
-                <v-btn v-if="activityIsPaused">CONTINUE ACTIVITY</v-btn>
-                <v-btn v-if="activityIsRunning">END SESSION</v-btn>
+                <v-btn class="me-auto" v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn>
+                <v-btn class="me-auto" v-if="activityIsPaused">CONTINUE ACTIVITY</v-btn>
+                <v-btn class="me-auto mt-3" v-if="activityIsRunning" @click="$emit('endSession')">END SESSION</v-btn>
             </v-col>
         </v-row>
     </v-container>
@@ -36,6 +36,7 @@
 
 <script>
 export default {
+    emits: ['endSession'],
     data() {
         return {
             notes: '',
