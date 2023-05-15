@@ -1,4 +1,6 @@
 <template>
+    <v-layout>
+    <v-app-bar clipped-left title="Remote Control App" color="rgba(61,61,61, 1)" theme="dark" density="comfortable"></v-app-bar>
     <patient-registration v-if="!patientRegistered" @create-session="registerPatient"></patient-registration>
     <session-configuration v-else-if="!sessionConfigured" @session-config-cancelled="backToPatientRegistration"
         @set-session-configuration="setSessionConfiguration"></session-configuration>
@@ -9,6 +11,7 @@
     @session-overview-cancelled="backToSessionConfiguration"
     @start-session="startSession"
     ></session-overview>
+</v-layout>
 </template>
 
 
@@ -87,7 +90,8 @@ export default {
         }
     },
     methods: {
-        startSession(){
+        startSession(sessionId){
+            console.log(sessionId);
             this.$router.push('/RunningSession');
         },
         registerPatient(id, name) {

@@ -7,27 +7,20 @@ const routes = [
   //2 pages: one: create-session, two: running session, redirect to one (create session)
   {
     path: '/',
-    //component: () => import('@/layouts/default/Default.vue'),
     name: 'SetUp',
     component: SetUp,
-    //component: () => import('@/pages/SetUp.vue'),
-
-    /* children: [
-      {
-        path: '',
-        name: 'Home', */
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        /* component: () => import( *//* webpackChunkName: "home" */ /* '@/pages/Home.vue'), */
-    /*   },
-    ], */
   },
   {
     path: '/RunningSession',
     name: 'RunningSession',
     component: RunningSession,
   }
+  //for creating running session front end
+  /*  {
+     path: '/',
+     name: 'RunningSession',
+     component: RunningSession,
+   } */
 ]
 
 const router = createRouter({

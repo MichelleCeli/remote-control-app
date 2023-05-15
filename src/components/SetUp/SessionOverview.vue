@@ -12,13 +12,13 @@
             </v-sheet>
         </v-sheet>
         <h2 class="align-self-center mt-10 text-orange">
-            {{ 'Session Code: ' + sessionCode }}
+            {{ 'Session ID: ' + sessionId }}
         </h2>
 
         <v-sheet class="d-flex justify-space-between mt-10">
             <v-btn @click="$emit('sessionOverviewCancelled')">BACK</v-btn>
             <v-btn theme="dark" :color="'rgba(31, 115, 221, 1)'"
-            @click="$emit('startSession')">START</v-btn>
+            @click="startSession">START</v-btn>
         </v-sheet>
 
     </v-card>
@@ -31,7 +31,12 @@ export default {
     data() {
         return {
             imgSrc: './',
-            sessionCode: 'XXXXX'
+            sessionId: 'XXXXX'
+        }
+    },
+    methods: {
+        startSession(){
+            this.$emit('startSession', this.sessionId);
         }
     }
 }

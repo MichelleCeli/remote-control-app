@@ -1,0 +1,66 @@
+<template>
+    <v-container >
+        <v-row>
+            <v-col class="pl-15">
+                <v-label>Patient's view</v-label>
+                <div id="video-exposure-scene" class="video"></div>
+            </v-col>
+            <v-col>
+                <v-expansion-panels style="width: 50%">
+                    <v-expansion-panel title="Manipulate dog behavior" >
+                        <v-expansion-panel-text>
+                            <v-list-item v-for="(action, a) in manipulations" :key="a">
+                                <v-btn block variant="outlined" color="rgba(31, 115, 221, 1)" >
+                                    {{ manipulations[a].title }}
+                                </v-btn>
+                            </v-list-item>
+                        </v-expansion-panel-text>
+                    </v-expansion-panel>
+                </v-expansion-panels>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col  class="pl-15">
+                <v-textarea label="Notes:" v-model="notes" style="width: 700px"></v-textarea>
+            </v-col>
+            <v-col class="d-flex flex-column">
+                <v-btn class="me-auto" v-if="!activityIsRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'"
+                    @click="startActivity">START ACTIVITY</v-btn>
+                <v-btn  v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn>
+                <v-btn v-if="activityIsPaused">CONTINUE ACTIVITY</v-btn>
+                <v-btn v-if="activityIsRunning">END SESSION</v-btn>
+            </v-col>
+        </v-row>
+    </v-container>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            notes: '',
+            activityIsRunning: false,
+            activityIsPaused: false,
+            manipulations: [
+                {
+                    title: 'bark',
+                },
+                {
+                    title: 'dig',
+                },
+                {
+                    title: 'jump',
+                }
+            ]
+        }
+    },
+    methods: {
+        startActivity() {
+            this.activityIsRunning = true;
+        },
+        pauseActivity() {
+            this.activityIsPaused = true;
+        }
+    }
+}
+</script>
