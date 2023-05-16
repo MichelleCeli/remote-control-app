@@ -6,7 +6,7 @@
         </div>
         <div class="d-flex justify-space-between mt-3" style="width: 100%" >
             <v-btn>change volume</v-btn>
-            <v-btn>mic on/off</v-btn>
+            <v-btn @click="changeMicrophoneState">{{ micBtnTitle }}</v-btn>
         </div>
         <v-btn theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
     </v-container>
@@ -16,5 +16,22 @@
 
 export default{
     emits: ['switchToExposure'],
+    data() {
+        return {
+            isMicOn: false
+        }
+    },
+    methods: {
+        changeMicrophoneState() {
+            this.isMicOn = !this.isMicOn;
+        }
+    },
+    computed: {
+        micBtnTitle() {
+            if (this.isMicOn === true){
+                return 'Mikrofon ausschalten';
+            } else return 'Mikrofon anschalten';
+        }
+    }
 }
 </script>

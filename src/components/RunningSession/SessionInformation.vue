@@ -17,32 +17,33 @@
             <h3>Titel Scenario:</h3>
             <h4>{{ scenarioTitle }}</h4>
          </div>
+         <div>
+            <h3 v-if="activeScene != 'session-history'">Aktive Szene:</h3>
+            <h4 v-if="activeScene === 'psychological-education'">Psychoedukation</h4>
+            <h4 v-else-if="activeScene === 'exposure-scenario'">Exposition</h4>
+            <h4 v-if="activeScene === 'session-history'">Sitzung beendet</h4>
+         </div>
       </div>
-
-      <div>
-         <h3>Aktive Szene:</h3> <!-- comp property for active scene color -->
-         <h4>Psychoedukation</h4>
-         <h4>Exposition</h4>
-      </div>
-
       <v-btn theme="dark" class="me-auto mb-10" :color="'rgba(221, 139, 31, 1)'" @click="disconnect()">DISCONNECT</v-btn>
-
    </v-container>
 </template>
 
 <script>
-export default{
-   props: 
-   ['sessionId', 
-   'patientId', 
-   'patientName', 
-   'scenarioTitle', 
-   'activeScene'],
+export default {
+   props:
+      ['sessionId',
+         'patientId',
+         'patientName',
+         'scenarioTitle',
+         'activeScene'],
    methods: {
-      disconnect(){
+      disconnect() {
          this.$router.push('/');
       }
-   }
+   },
+   /* created() {
+      console.log(this.activeScene);
+   } */
 }
 </script>
 

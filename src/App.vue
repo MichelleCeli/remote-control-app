@@ -18,9 +18,21 @@
 </script>
 
 <style>
-.video{
-  height: 420px;
-  width:  700px;
+@media (min-width: 1200px){
+  .video{
+  height: 340px;
+  width: 567px;
   background-color: rgb(180, 180, 180);
 }
+}
+
+
+@media (min-width: 1800px){
+  .video{
+  height: 420px;
+  width:  700px;
+  }
+}
+
+
 </style>

@@ -10,7 +10,7 @@
            :active-scene="activeScene"></session-information>
         </v-navigation-drawer>
         <v-main style="min-height: 300px;">
-            <SessionView :scenario-title="scenarioTitle"></SessionView>
+            <SessionView :scenario-title="scenarioTitle" @change-active-scene="changeActiveScene"></SessionView>
         </v-main>
     </v-layout>
 </template>
@@ -31,7 +31,18 @@ export default{
             patientId: 'patentid',
             patientName: 'patientname',
             scenarioTitle: 'scenarioTitle', */
-            activeScene: 'psychoeducation'
+            activeScene: 'psychological-education'
+        }
+    },
+    methods: {
+        changeActiveScene(sessionState) {
+            if(sessionState === 'exposure-scenario'){
+                this.activeScene = 'exposure-scenario';
+            } else if (sessionState === 'session-history'){
+                this.activeScene = 'session-history';
+               /*  console.log('active scene changed to session-history'); */
+            }
+
         }
     }
 }
