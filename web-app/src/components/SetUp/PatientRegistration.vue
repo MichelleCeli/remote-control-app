@@ -34,8 +34,11 @@ export default {
             } else {
                 console.log("enter data first");
             }
+        },
+    },
+    beforeCreate() {
+            console.log('before Create!');
         }
-    }
 }
 
 </script>

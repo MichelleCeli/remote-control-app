@@ -37,5 +37,30 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:3080',
+        changeOrigin: true
+      },
+    }
   },
-})
+   /* devServer: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:3080',
+        changeOrigin: true
+      },
+    }
+  }  */
+});
+/* 
+module.exports = {
+  devServer: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:3080',
+        changeOrigin: true
+      },
+    }
+  }
+} */

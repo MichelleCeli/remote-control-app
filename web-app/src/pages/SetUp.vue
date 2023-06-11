@@ -1,17 +1,14 @@
 <template>
     <v-layout>
-    <v-app-bar clipped-left title="Remote Control App" color="rgba(61,61,61, 1)" theme="dark" density="comfortable"></v-app-bar>
-    <patient-registration v-if="!patientRegistered" @create-session="registerPatient"></patient-registration>
-    <session-configuration v-else-if="!sessionConfigured" @session-config-cancelled="backToPatientRegistration"
-        @set-session-configuration="setSessionConfiguration"></session-configuration>
-    <session-overview v-else 
-    :scenario-title="sessionSettings.scenarioTitle"
-    :scenario-description="sessionSettings.scenarioDescription"
-    :platform-name="sessionSettings.platformName"
-    @session-overview-cancelled="backToSessionConfiguration"
-    @start-session="startSession"
-    ></session-overview>
-</v-layout>
+        <v-app-bar clipped-left title="Remote Control App" color="rgba(61,61,61, 1)" theme="dark"
+            density="comfortable"></v-app-bar>
+        <patient-registration v-if="!patientRegistered" @create-session="registerPatient"></patient-registration>
+        <session-configuration v-else-if="!sessionConfigured" @session-config-cancelled="backToPatientRegistration"
+            @set-session-configuration="setSessionConfiguration"></session-configuration>
+        <session-overview v-else :scenario-title="sessionSettings.scenarioTitle"
+            :scenario-description="sessionSettings.scenarioDescription" :platform-name="sessionSettings.platformName"
+            @session-overview-cancelled="backToSessionConfiguration" @start-session="startSession"></session-overview>
+    </v-layout>
 </template>
 
 
@@ -19,6 +16,7 @@
 import PatientRegistration from '../components/SetUp/PatientRegistration.vue'
 import SessionConfiguration from '../components/SetUp/SessionConfiguration.vue'
 import SessionOverview from '../components/SetUp/SessionOverview.vue'
+import { testApp } from '../../services/service.js'
 
 export default {
     components: {
@@ -68,19 +66,19 @@ export default {
                 { type: 'divider' },
             ],
             platforms: [
-            { type: 'subheader', title: 'Platform:' },
-            { type: 'divider' },
-            {
-                title: 'Oculus Quest',
-                value: 'oculus',
-            },
-            { type: 'divider' },
-            {
-                title: 'No Device',
-                value: 'no_device',
-            },
-            { type: 'divider' },
-        ],
+                { type: 'subheader', title: 'Platform:' },
+                { type: 'divider' },
+                {
+                    title: 'Oculus Quest',
+                    value: 'oculus',
+                },
+                { type: 'divider' },
+                {
+                    title: 'No Device',
+                    value: 'no_device',
+                },
+                { type: 'divider' },
+            ],
         };
     },
     provide() {
@@ -90,7 +88,7 @@ export default {
         }
     },
     methods: {
-        startSession(sessionId){
+        startSession(sessionId) {
             console.log(sessionId);
             this.$router.push({
                 name: 'RunningSession',
@@ -100,7 +98,7 @@ export default {
                     patientName: this.patient.name,
                     scenarioTitle: this.sessionSettings.scenarioTitle
                 }
-                });
+            });
         },
         registerPatient(id, name) {
             this.patient.id = id;
@@ -127,7 +125,17 @@ export default {
         },
         backToSessionConfiguration() {
             this.sessionConfigured = false;
-        }
-    }
+        },
+        testApp() {
+            testApp().then(response => {
+                console.log(response);
+            });
+            console.log("end testApp in SetUp");
+        },
+    },
+    mounted() {
+            this.testApp();
+            console.log("mounted");
+        },
 }
 </script>

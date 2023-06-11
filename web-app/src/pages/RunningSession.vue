@@ -16,8 +16,9 @@
 </template>
 
 <script>
- import SessionInformation from '../components/RunningSession/SessionInformation.vue'
+import SessionInformation from '../components/RunningSession/SessionInformation.vue'
 import SessionView from '../components/RunningSession/SessionView.vue'
+
 
 export default{
     props: ['sessionId', 'patientId', 'patientName', 'scenarioTitle'],
@@ -43,7 +44,8 @@ export default{
                /*  console.log('active scene changed to session-history'); */
             }
 
-        }
+        },
+
     }
 }
 </script>
