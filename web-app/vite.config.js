@@ -1,4 +1,4 @@
-// Plugins
+// Plugins !!!!!for plugin vue: vite 3, doesn't work with vite 4
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 

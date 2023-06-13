@@ -16,7 +16,6 @@
 import PatientRegistration from '../components/SetUp/PatientRegistration.vue'
 import SessionConfiguration from '../components/SetUp/SessionConfiguration.vue'
 import SessionOverview from '../components/SetUp/SessionOverview.vue'
-import { testApp } from '../../services/service.js'
 
 export default {
     components: {
@@ -126,16 +125,6 @@ export default {
         backToSessionConfiguration() {
             this.sessionConfigured = false;
         },
-        testApp() {
-            testApp().then(response => {
-                console.log(response);
-            });
-            console.log("end testApp in SetUp");
-        },
     },
-    mounted() {
-            this.testApp();
-            console.log("mounted");
-        },
 }
 </script>
