@@ -2,7 +2,10 @@ const express = require('express');
 
 const app = express();
 
+const fs = require("fs");
+
 var expressWs = require('express-ws')(app);
+var aWss = expressWs.getWss('/');
 
 app.use(function (req, res, next) {
     console.log('middleware');
@@ -16,11 +19,45 @@ app.use(function (req, res, next) {
   });
   
   app.ws('/', function(ws, req) {
+
     ws.on('message', function(msg) {
-      console.log(msg);
-    });
+        message = JSON.parse(msg);
+
+         if(typeof message.data !== "undefined"){   
+            console.log(message);
+            aWss.clients.forEach(function (client) {
+                message = JSON.stringify(message);
+                client.send(message);
+                /* console.log(ws._socket.remoteAddress); */
+                console.log("message sent to client:");
+                /* console.log(message.data.frame); */
+              });
+
+        } else {
+            console.log("message data undefined"); 
+            console.log(message); 
+            console.log("undefined message end");
+        }
+        
+
+        
+        /* aWss.clients.forEach(function (client) {
+            client.send(msg.data);
+            console.log(ws._socket.remoteAddress);
+            console.log("message sent to client");
+          }); */
+
+          //console.log(expressWs.getWss().clients);
+        //const buffer = Buffer.from(frame, "base64");
+        //console.log(buffer);  
+        //fs.writeFileSync('image.jpg', buffer);
+      });
+    
     console.log('socket', req.testing);
+
   });
+
+
   
   app.listen(8080);
 

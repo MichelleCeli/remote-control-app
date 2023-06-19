@@ -2,7 +2,9 @@
     <v-container class="d-flex flex-column align-center" style="width: 700px">
         <div>
             <v-label>patient's view</v-label>
-            <div id="video-psychoeducation" class="video"></div>
+            <!-- <v-label>{{stream}}</v-label> -->
+            <v-img width="480" height="360" cover :src="stream" class="mr-4"></v-img>
+            <!-- <div id="video-psychoeducation" class="video"></div> -->
         </div>
         <div class="d-flex justify-space-between mt-3" style="width: 100%" >
             <v-btn>change volume</v-btn>
@@ -15,6 +17,7 @@
 <script>
 
 export default{
+    props: ['stream'],
     emits: ['switchToExposure'],
     data() {
         return {

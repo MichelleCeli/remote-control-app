@@ -8,21 +8,22 @@
     <v-app-bar title="Remote Control App" color="rgba(61,61,61, 1)" theme="dark" density="comfortable"></v-app-bar>
   </v-layout> -->
     <router-view></router-view>
+    
   
   </v-sheet>
 </template>
 
-<script>
+ <!-- <script>
 
 export default {
     name: 'App',
-    data() {
+   /*  data() {
         return {
             socket: {},
             connectedStatus: 'Not connected!',
             message: 'No message yet!'
         }
-    },
+    }, */
     async mounted() {
         // Calculate the URL for the websocket. If you have a fixed URL, then you can remove all this and simply put in
         // ws://your-url-here.com or wss:// for secure websockets.
@@ -45,6 +46,7 @@ export default {
             // We can parse the data we know to be JSON, and then check it for data attributes
             let parsedMessage = JSON.parse(event.data);
             // If those data attributes exist, we can then console log or show data to the user on their web page.
+            console.log("message from server!");
             console.log(parsedMessage);
             if(typeof parsedMessage.message !== "undefined" && parsedMessage.message == "hello") {
                 this.message = parsedMessage.message;
@@ -89,7 +91,7 @@ export default {
 }
 
 
-</script>
+</script> -->
 
 <style>
 @media (min-width: 1200px){
