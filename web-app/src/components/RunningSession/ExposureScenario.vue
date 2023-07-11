@@ -6,7 +6,7 @@
                 <div id="video-exposure-scene" class="video"></div>
             </v-col>
             <v-col>
-                <v-label class="text-grey-lighten-5">Manipulate behavior</v-label>
+                <!-- <v-label class="text-grey-lighten-5">Manipulate behavior</v-label>
                 <v-expansion-panels style="width: 50%">
                     <v-expansion-panel title="Manipulate dog behavior" >
                         <v-expansion-panel-text>
@@ -17,7 +17,7 @@
                             </v-list-item>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
-                </v-expansion-panels>
+                </v-expansion-panels> -->
             </v-col>
         </v-row>
         <v-row>
@@ -27,7 +27,7 @@
             <v-col class="d-flex flex-column">
                 <v-btn class="me-auto" v-if="!activityIsRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'"
                     @click="startActivity">START ACTIVITY</v-btn>
-                <v-btn class="me-auto" v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn>
+                <!-- <v-btn class="me-auto" v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn> -->
                 <v-btn class="me-auto" v-if="activityIsPaused" @click="continueActivity">CONTINUE ACTIVITY</v-btn>
                 <v-btn theme="dark" color="rgba(255, 0, 0, 1)" class="me-auto mt-3" v-if="activityIsRunning" @click="endSession">END SESSION</v-btn>
             </v-col>

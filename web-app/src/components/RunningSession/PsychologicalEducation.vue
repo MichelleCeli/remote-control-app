@@ -6,10 +6,10 @@
             <v-img width="480" height="360" cover :src="stream" class="mr-4"></v-img>
             <!-- <div id="video-psychoeducation" class="video"></div> -->
         </div>
-        <div class="d-flex justify-space-between mt-3" style="width: 100%" >
+        <!-- <div class="d-flex justify-space-between mt-3" style="width: 100%" >
             <v-btn>change volume</v-btn>
             <v-btn @click="changeMicrophoneState">{{ micBtnTitle }}</v-btn>
-        </div>
+        </div> -->
         <v-btn theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
     </v-container>
 </template>
@@ -24,11 +24,11 @@ export default{
             isMicOn: false
         }
     },
-    methods: {
+    /* methods: {
         changeMicrophoneState() {
             this.isMicOn = !this.isMicOn;
         }
-    },
+    }, */
     computed: {
         micBtnTitle() {
             if (this.isMicOn === true){
