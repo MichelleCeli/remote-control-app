@@ -10,7 +10,8 @@
             <v-btn>change volume</v-btn>
             <v-btn @click="changeMicrophoneState">{{ micBtnTitle }}</v-btn>
         </div> -->
-        <v-btn theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
+        <v-btn v-if="!sceneRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="startPeScene" >START SCENE</v-btn>
+        <v-btn v-else class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
     </v-container>
 </template>
 
@@ -18,23 +19,27 @@
 
 export default{
     props: ['stream'],
-    emits: ['switchToExposure'],
+    emits: ['switchToExposure', 'startPeScene'],
     data() {
         return {
-            isMicOn: false
+            sceneRunning: false
         }
     },
-    /* methods: {
-        changeMicrophoneState() {
-            this.isMicOn = !this.isMicOn;
+     methods: {
+        startPeScene(){
+            this.sceneRunning = true;
+            this.$emit('startPeScene');
         }
-    }, */
-    computed: {
+       /*  changeMicrophoneState() {
+            this.isMicOn = !this.isMicOn;
+        } */
+    }, 
+    /* computed: {
         micBtnTitle() {
             if (this.isMicOn === true){
                 return 'Mikrofon ausschalten';
             } else return 'Mikrofon anschalten';
         }
-    }
+    } */
 }
 </script>

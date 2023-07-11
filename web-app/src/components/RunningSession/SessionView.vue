@@ -2,7 +2,7 @@
     <v-container class="d-flex justify-center mt-10">
         <h2>{{ stateTitle + ' ' + therapistName + ' - ' + scenarioTitle }}</h2> <!-- scenarioTitle -->
     </v-container>
-    <psychological-education v-if="sessionState === 'psychological-education'" @switch-to-exposure="switchScene" :stream="stream"></psychological-education>
+    <psychological-education v-if="sessionState === 'psychological-education'" @switch-to-exposure="switchScene" @start-pe-scene="$emit('startPeScene')" :stream="stream"></psychological-education>
     <exposure-scenario v-else-if="sessionState === 'exposure-scenario'" @end-session="switchScene"></exposure-scenario>
     <session-history v-else :notes-from-session="this.notes"></session-history>
 
@@ -14,7 +14,7 @@ import ExposureScenario from './ExposureScenario.vue'
 import SessionHistory from './SessionHistory.vue'
 
 export default {
-    emits: ['changeActiveScene'],
+    emits: ['changeActiveScene', 'startPeScene'],
     props: ['therapistName', 'scenarioTitle', 'stream'],
     components: {
         PsychologicalEducation,
