@@ -11,7 +11,7 @@ const routes = [
     component: SetUp,
   },
   {
-    path: '/RunningSession/:sessionId/:patientId/:patientName/:scenarioTitle',
+    path: '/RunningSession/:patientId/:patientName/:therapistName/:scenarioTitle', //:sessionId deleted
     name: 'RunningSession',
     component: RunningSession,
     props: true

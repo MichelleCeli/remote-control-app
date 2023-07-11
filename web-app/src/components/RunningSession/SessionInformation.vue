@@ -2,16 +2,16 @@
    <v-container class="h-100 ml-4 d-flex flex-column justify-space-between">
       <div class="mt-10">
          <div class="info-p">
-            <h3>Session ID:</h3>
-            <h4>{{ sessionId }}</h4>
-         </div>
-         <div class="info-p">
             <h3>Patient ID:</h3>
             <h4>{{ patientId }}</h4>
          </div>
          <div class="info-p">
             <h3>Name des Patienten:</h3>
             <h4>{{ patientName }}</h4>
+         </div>
+         <div class="info-p">
+            <h3>Therapeut:</h3>
+            <h4>{{ therapistName }}</h4>
          </div>
          <div class="info-p">
             <h3>Titel Scenario:</h3>
@@ -31,9 +31,9 @@
 <script>
 export default {
    props:
-      ['sessionId',
-         'patientId',
+      [  'patientId',
          'patientName',
+         'therapistName',
          'scenarioTitle',
          'activeScene'],
    methods: {

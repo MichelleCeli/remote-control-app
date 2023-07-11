@@ -1,9 +1,9 @@
 <template>
-    <v-card id="choose-platform-scenario" class="d-flex flex-column justify-space-between">
-        <v-card-title class="mb-3 align-self-center">Please choose the platform and a scenario for the exposure therapy session:</v-card-title>
+    <v-card id="choose-therapist-scenario" class="d-flex flex-column justify-space-between">
+        <v-card-title class="mb-3 align-self-center">Please choose a therapist and a scenario for the exposure therapy session:</v-card-title>
 
         <v-sheet class="d-flex flex-row">
-            <PlatformList class="w-50" @update-platform="updatePlatform"></PlatformList>
+            <TherapistList class="w-50" @update-therapist="updateTherapist"></TherapistList>
             <v-divider :vertical="true" class="mx-2" :thickness="2"></v-divider>
             <ScenarioList class="w-50" @update-scenario="updateScenario"></ScenarioList>
         </v-sheet>
@@ -16,39 +16,39 @@
 </template>
 
 <script>
-import PlatformList from './/PlatformList.vue';
+import TherapistList from './TherapistList.vue';
 import ScenarioList from './ScenarioList.vue';
 
 export default {
     components: {
-        PlatformList, ScenarioList
+        TherapistList, ScenarioList
     },
     emits: ['sessionConfigCancelled', 'setSessionConfiguration'],
     data() {
         return {
             sessionSettings: {
-                platform: '',
+                therapist: '',
                 scenario: ''
             }
         }
     },
     computed: {
         settingsDone() {
-            if (this.sessionSettings.platform === '' || this.sessionSettings.scenario === '') {
+            if (this.sessionSettings.therapist === '' || this.sessionSettings.scenario === '') {
                 return true;
             }
             return false;
         }
     },
     methods: {
-        updatePlatform(platform) {
-            this.sessionSettings.platform = platform;
+        updateTherapist(therapist) {
+            this.sessionSettings.therapist = therapist;
         },
         updateScenario(scenario) {
             this.sessionSettings.scenario = scenario;
         },
-        saveSessionConfigurations(platform, scenario) {
-            this.sessionSettings.platform = platform;
+        saveSessionConfigurations(therapist, scenario) {
+            this.sessionSettings.therapist = therapist;
             this.sessionSettigns.scenario = scenario;
         },
 
@@ -59,7 +59,7 @@ export default {
 
 
 <style scoped>
-#choose-platform-scenario {
+#choose-therapist-scenario {
     /* display: flex;
     flex-direction: column; */
     top: 20vh;

@@ -1,13 +1,13 @@
 <template>
     <v-sheet class="mx-auto">
-        <v-list :items="platforms" @click:select="platformSelected" :mandatory="true"></v-list>
+        <v-list :items="therapists" @click:select="therapistSelected" :mandatory="true"></v-list>
     </v-sheet>
 </template>
 
 <script>
 export default {
-    emits: ['updatePlatform'],
-    inject: ['platforms'],
+    emits: ['updateTherapist'],
+    inject: ['therapists'],
     /* data: () => ({
         items: [
             { type: 'subheader', title: 'Platform:' },
@@ -25,8 +25,8 @@ export default {
         ],
     }), */
     methods: {
-        platformSelected(platform) {
-            this.$emit('updatePlatform', platform.id);
+        therapistSelected(therapist) {
+            this.$emit('updateTherapist', therapist.id);
         }
     }
 }

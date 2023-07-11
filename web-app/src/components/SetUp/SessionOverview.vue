@@ -1,7 +1,7 @@
 <template>
     <v-card id="scenario-overview" class="d-flex flex-column">
         <v-card-title class="mb-3 align-self-center">
-            {{ platformName + ' - ' + scenarioTitle }}
+            {{ therapistName + ' - ' + scenarioTitle }}
         </v-card-title>
 
         <v-sheet class="d-flex ">
@@ -11,9 +11,9 @@
                 <p>{{ scenarioDescription }}</p>
             </v-sheet>
         </v-sheet>
-        <h2 class="align-self-center mt-10 text-orange">
+        <!-- <h2 class="align-self-center mt-10 text-orange">
             {{ 'Session ID: ' + sessionId }}
-        </h2>
+        </h2> -->
 
         <v-sheet class="d-flex justify-space-between mt-10">
             <v-btn @click="$emit('sessionOverviewCancelled')">BACK</v-btn>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    props: ['platformName', 'scenarioTitle', 'scenarioDescription'],
+    props: ['therapistName', 'scenarioTitle', 'scenarioDescription'],
     emits: ['sessionOverviewCancelled', 'startSession'],
     data() {
         return {
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         startSession(){
-            this.$emit('startSession', this.sessionId);
+            this.$emit('startSession'); //no session Id anymore
         }
     }
 }

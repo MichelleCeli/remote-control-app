@@ -6,7 +6,7 @@
         <session-configuration v-else-if="!sessionConfigured" @session-config-cancelled="backToPatientRegistration"
             @set-session-configuration="setSessionConfiguration"></session-configuration>
         <session-overview v-else :scenario-title="sessionSettings.scenarioTitle"
-            :scenario-description="sessionSettings.scenarioDescription" :platform-name="sessionSettings.platformName"
+            :scenario-description="sessionSettings.scenarioDescription" :therapist-name="sessionSettings.therapistName"
             @session-overview-cancelled="backToSessionConfiguration" @start-session="startSession"></session-overview>
     </v-layout>
 </template>
@@ -30,8 +30,8 @@ export default {
             patientRegistered: false,
             sessionConfigured: false,
             sessionSettings: {
-                platform: '',
-                platformName: '',
+                therapist: '',
+                therapistName: '',
                 scenario: '',
                 scenarioTitle: '',
                 scenarioDescription: ''
@@ -64,17 +64,27 @@ export default {
                 },
                 { type: 'divider' },
             ],
-            platforms: [
-                { type: 'subheader', title: 'Platform:' },
+            therapists: [
+                { type: 'subheader', title: 'Therapist:' },
                 { type: 'divider' },
                 {
-                    title: 'Oculus Quest',
-                    value: 'oculus',
+                    title: 'Realistic Human',
+                    value: 'real_human',
                 },
                 { type: 'divider' },
                 {
-                    title: 'No Device',
-                    value: 'no_device',
+                    title: 'Cartoon Human',
+                    value: 'cartoon_human',
+                },
+                { type: 'divider' },
+                {
+                    title: 'Cat',
+                    value: 'cat',
+                },
+                { type: 'divider' },
+                {
+                    title: 'Robot',
+                    value: 'robot',
                 },
                 { type: 'divider' },
             ],
@@ -83,18 +93,18 @@ export default {
     provide() {
         return {
             scenarios: this.scenarios,
-            platforms: this.platforms,
+            therapists: this.therapists,
         }
     },
     methods: {
-        startSession(sessionId) {
-            console.log(sessionId);
+        startSession() { //no session Id anymore
             this.$router.push({
                 name: 'RunningSession',
                 params: {
-                    sessionId: sessionId,
+                    /* sessionId: sessionId, */
                     patientId: this.patient.id,
                     patientName: this.patient.name,
+                    therapistName: this.sessionSettings.therapistName,
                     scenarioTitle: this.sessionSettings.scenarioTitle
                 }
             });
@@ -114,11 +124,11 @@ export default {
             this.sessionSettings.scenarioTitle = scenario.title;
             this.sessionSettings.scenarioDescription = scenario.subtitle;
 
-            const platform = this.platforms.find(platform => platform.value === sessionConfig.platform);
-            this.sessionSettings.platform = platform.value;
-            this.sessionSettings.platformName = platform.title;
+            const therapist = this.therapists.find(therapist => therapist.value === sessionConfig.therapist);
+            this.sessionSettings.therapist = therapist.value;
+            this.sessionSettings.therapistName = therapist.title;
 
-            if (this.sessionSettings.platform != '' && this.sessionSettings.scenario != '') {
+            if (this.sessionSettings.therapist != '' && this.sessionSettings.scenario != '') {
                 this.sessionConfigured = true;
             }
         },

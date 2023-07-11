@@ -3,14 +3,14 @@
         <v-app-bar title="Remote Control App" color="rgba(61,61,61, 1)" theme="dark" density="comfortable"></v-app-bar>
         <v-navigation-drawer location="left" color="grey-lighten-2" permanent >
            <session-information 
-           :session-id="sessionId"
            :patient-id="patientId"
            :patient-name="patientName"
+           :therapist-name="therapistName"
            :scenario-title="scenarioTitle"
            :active-scene="activeScene"></session-information>
         </v-navigation-drawer>
         <v-main style="min-height: 300px;">
-            <SessionView :scenario-title="scenarioTitle" :stream="stream" @change-active-scene="changeActiveScene"></SessionView>
+            <SessionView :scenario-title="scenarioTitle" :therapist-name="therapistName" :stream="stream" @change-active-scene="changeActiveScene"></SessionView>
         </v-main>
     </v-layout>
 </template>
@@ -21,7 +21,7 @@ import SessionView from '../components/RunningSession/SessionView.vue'
 
 
 export default{
-    props: ['sessionId', 'patientId', 'patientName', 'scenarioTitle'],
+    props: ['patientId', 'patientName', 'therapistName', 'scenarioTitle'],
     components: {
         SessionInformation,
         SessionView
