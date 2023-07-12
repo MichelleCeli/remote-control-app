@@ -21,22 +21,35 @@ app.use(function (req, res, next) {
   app.ws('/', function(ws, req) {
 
     ws.on('message', function(msg) {
+        //console.log(msg);
         message = JSON.parse(msg);
+        //console.log(msg);
 
          if(typeof message.data !== "undefined"){   
-            console.log("message.data is defined")
-            console.log(message);
+            //console.log("message.data is defined")
+            //console.log(message);
+            message = JSON.stringify(message);
+
             aWss.clients.forEach(function (client) {
-                message = JSON.stringify(message);
+                
                 client.send(message);
-                /* console.log(ws._socket.remoteAddress); */
-                console.log("message sent to client:");
-                /* console.log(message.data.frame); */
+                //console.log("data message sent: " + message)
+                //console.log("message sent to client:");
               });
 
+        } else if(typeof message.type !== undefined){
+
+            message = JSON.stringify(message);
+
+            if(message.type == "Session Information"){
+                aWss.clients.forEach(function (client) {
+
+                    client.send(message);     
+                    console.log("session information message sent: " + message)
+                  });
+            }
         } else {
-            console.log("message data undefined"); 
-            //console.log(message); 
+            console.log("message type undefined");
         }
         
 

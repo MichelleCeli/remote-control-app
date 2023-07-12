@@ -41,7 +41,12 @@ export default{
     },
     methods: {
         startPeScene(){
-            console.log("starting PE Scene")
+            console.log("starting PE Scene");
+            this.sendMessage(JSON.stringify({
+                "type" : "Session Information",
+                "therapist" : this.therapistName,
+                "scenarioTitle" : this.scenarioTitle
+            }));
         },
         changeActiveScene(sessionState) {
             if(sessionState === 'exposure-scenario'){
@@ -114,10 +119,10 @@ export default{
             if(typeof parsedMessage.data !== "undefined") {
                 var frame = parsedMessage.data.frame;
                 /* frame = frame.slice(23); */
-                console.log('data defined: We have received a message from the server!');
+                //console.log('data defined: We have received a message from the server!');
                 
                 this.stream = frame;
-                console.log(this.stream);
+                //console.log(this.stream);
             }
     
             if(typeof parsedMessage.message !== "undefined" && parsedMessage.message == "hello") {
