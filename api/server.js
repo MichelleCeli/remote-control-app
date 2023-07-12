@@ -21,8 +21,9 @@ app.use(function (req, res, next) {
   app.ws('/', function(ws, req) {
 
     ws.on('message', function(msg) {
-        //console.log(msg);
+        
         message = JSON.parse(msg);
+        console.log(message.type);
         //console.log(msg);
 
          if(typeof message.data !== "undefined"){   
@@ -39,9 +40,11 @@ app.use(function (req, res, next) {
 
         } else if(typeof message.type !== undefined){
 
-            message = JSON.stringify(message);
+
 
             if(message.type == "Session Information"){
+
+                message = JSON.stringify(message);
                 aWss.clients.forEach(function (client) {
 
                     client.send(message);     

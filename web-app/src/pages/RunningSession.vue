@@ -42,11 +42,11 @@ export default{
     methods: {
         startPeScene(){
             console.log("starting PE Scene");
-            this.sendMessage(JSON.stringify({
+             this.sendMessage(JSON.stringify({
                 "type" : "Session Information",
                 "therapist" : this.therapistName,
                 "scenarioTitle" : this.scenarioTitle
-            }));
+            })); 
         },
         changeActiveScene(sessionState) {
             if(sessionState === 'exposure-scenario'){
@@ -104,7 +104,12 @@ export default{
         this.socket.onopen = () => {
             console.log('Websocket connected.');
             this.connectedStatus = 'Connected';
-            this.sendMessage(JSON.stringify({"message" : "Hello, server."}));
+            //this.sendMessage(JSON.stringify({"message" : "Hello, server."}));
+            /* this.sendMessage(JSON.stringify({
+                "type" : "Session Information",
+                "therapist" : this.therapistName,
+                "scenarioTitle" : this.scenarioTitle
+            })); */
         }
 
         // When we receive a message from the server, we can capture it here in the onmessage event.
