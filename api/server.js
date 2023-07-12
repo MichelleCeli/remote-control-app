@@ -23,7 +23,6 @@ app.use(function (req, res, next) {
     ws.on('message', function(msg) {
         
         message = JSON.parse(msg);
-        console.log(message.type);
         //console.log(msg);
 
          if(typeof message.data !== "undefined"){   
@@ -39,8 +38,6 @@ app.use(function (req, res, next) {
               });
 
         } else if(typeof message.type !== undefined){
-
-
 
             if(message.type == "Session Information"){
 
