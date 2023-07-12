@@ -10,7 +10,7 @@
            :active-scene="activeScene"></session-information>
         </v-navigation-drawer>
         <v-main style="min-height: 300px;">
-            <SessionView :scenario-title="scenarioTitle" :therapist-name="therapistName" :stream="stream" @start-pe-scene="startPeScene" @change-active-scene="changeActiveScene"></SessionView>
+            <SessionView :scenario-title="scenarioTitle" :therapist-name="therapistName" :stream="stream" :socket="socket" @start-pe-scene="startPeScene" @change-active-scene="changeActiveScene"></SessionView>
         </v-main>
     </v-layout>
 </template>

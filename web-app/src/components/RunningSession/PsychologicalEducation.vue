@@ -18,7 +18,7 @@
 <script>
 
 export default{
-    props: ['stream'],
+    props: ['stream', 'socket'],
     emits: ['switchToExposure', 'startPeScene'],
     data() {
         return {
