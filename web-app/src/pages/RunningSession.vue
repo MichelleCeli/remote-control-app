@@ -109,11 +109,12 @@ export default{
             // If those data attributes exist, we can then console log or show data to the user on their web page.
             /* console.log("message from server!");
             console.log(typeof parsedMessage.data); */
+            /* console.log(parsedMessage); */
 
             if(typeof parsedMessage.data !== "undefined") {
                 var frame = parsedMessage.data.frame;
                 /* frame = frame.slice(23); */
-                console.log('We have received a message from the server!');
+                console.log('data defined: We have received a message from the server!');
                 
                 this.stream = frame;
                 console.log(this.stream);
@@ -121,7 +122,7 @@ export default{
     
             if(typeof parsedMessage.message !== "undefined" && parsedMessage.message == "hello") {
                 this.message = parsedMessage.message;
-                console.log('We have received a message from the server!')
+                console.log('"Message" + We have received a message from the server!')
             }
         }
     },

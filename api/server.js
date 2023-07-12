@@ -24,6 +24,7 @@ app.use(function (req, res, next) {
         message = JSON.parse(msg);
 
          if(typeof message.data !== "undefined"){   
+            console.log("message.data is defined")
             console.log(message);
             aWss.clients.forEach(function (client) {
                 message = JSON.stringify(message);
@@ -35,8 +36,7 @@ app.use(function (req, res, next) {
 
         } else {
             console.log("message data undefined"); 
-            console.log(message); 
-            console.log("undefined message end");
+            //console.log(message); 
         }
         
 
