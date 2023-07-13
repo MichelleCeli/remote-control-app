@@ -32,7 +32,7 @@
             <v-btn @click="changeMicrophoneState">{{ micBtnTitle }}</v-btn>
         </div> -->
         <v-btn v-if="!sceneRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'" class="mt-12" @click="startPeScene" >START SCENE</v-btn>
-        <v-btn v-else class="mt-12" @click="$emit('switchToExposure')">SWITCH TO EXPOSURE SCENE</v-btn>
+        <v-btn v-else class="mt-12" @click="switchToExposureScene">SWITCH TO EXPOSURE SCENE</v-btn>
     </v-row>
     </v-container>
 </template>
@@ -51,6 +51,13 @@ export default{
         startPeScene(){
             this.sceneRunning = true;
             this.$emit('startPeScene');
+        },
+        switchToExposureScene(){
+            this.sendMessage(JSON.stringify({
+                "type" : "Switch To Exposure",         
+            })); 
+            console.log("method clicked");
+            this.$emit('switchToExposure');
         },
         triggerAudio(audio){
             this.sendMessage(JSON.stringify({

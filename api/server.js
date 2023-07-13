@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
         //console.log(msg);
 
          if(typeof message.data !== "undefined"){   
-            //console.log("message.data is defined")
+            console.log("message.data is defined")
             //console.log(message);
             message = JSON.stringify(message);
 
@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 
         } else if(typeof message.type !== undefined){
 
-            if(message.type == "Session Information" || message.type == "Trigger Audio"){
+            if(message.type == "Session Information" || message.type == "Trigger Audio" || message.type == "Switch To Exposure"){
 
                 message = JSON.stringify(message);
                 aWss.clients.forEach(function (client) {
