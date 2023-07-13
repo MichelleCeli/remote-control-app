@@ -39,13 +39,13 @@ app.use(function (req, res, next) {
 
         } else if(typeof message.type !== undefined){
 
-            if(message.type == "Session Information"){
+            if(message.type == "Session Information" || message.type == "Trigger Audio"){
 
                 message = JSON.stringify(message);
                 aWss.clients.forEach(function (client) {
 
                     client.send(message);     
-                    console.log("session information message sent: " + message)
+                    console.log("information for Unity sent: " + message)
                   });
             }
         } else {

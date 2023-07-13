@@ -9,17 +9,17 @@
         </v-col>
         <v-col>
             <div id="dialog01">
-            <v-btn onclick="triggerAudio()">T1</v-btn>
-            <v-btn onclick="triggerAudio()">T2</v-btn>
-            <v-btn onclick="triggerAudio()">T2A_Richtig</v-btn>
-            <v-btn onclick="triggerAudio()">T2B_Falsch</v-btn>
-            <v-btn onclick="triggerAudio()">T3</v-btn>
-            <v-btn onclick="triggerAudio()">T3A_Richtig</v-btn>
-            <v-btn onclick="triggerAudio()">T3B_Falsch</v-btn>
-            <v-btn onclick="triggerAudio()">T4</v-btn>
-            <v-btn onclick="triggerAudio()">T4A_JA</v-btn>
-            <v-btn onclick="triggerAudio()">T4B_NEIN</v-btn>
-            <v-btn onclick="triggerAudio()">T4B_NEIN_2</v-btn>
+            <v-btn @click="triggerAudio('T1')">T1</v-btn>
+            <v-btn @click="triggerAudio('T2')">T2</v-btn>
+            <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T2B')">T2B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T3')">T3</v-btn>
+            <v-btn @click="triggerAudio('T3A')">T3A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T3B')">T3B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T4')">T4</v-btn>
+            <v-btn @click="triggerAudio('T4A')">T4A_JA</v-btn>
+            <v-btn @click="triggerAudio('T4B')">T4B_NEIN</v-btn>
+            <v-btn @click="triggerAudio('T4B2')">T4B_NEIN_2</v-btn>
             </div>
             
         </v-col>
@@ -40,7 +40,7 @@
 <script>
 
 export default{
-    props: ['stream', 'socket'],
+    props: ['stream', 'socket', 'therapistName'],
     emits: ['switchToExposure', 'startPeScene'],
     data() {
         return {
@@ -52,13 +52,47 @@ export default{
             this.sceneRunning = true;
             this.$emit('startPeScene');
         },
-        triggerAudio(){
+        triggerAudio(audio){
+            this.sendMessage(JSON.stringify({
+                "type" : "Trigger Audio",
+                "therapist" : this.therapistName,
+                "scenarioTitle" : " ",
+                "audio" : audio                
+            })); 
+            console.log(audio);
+        },
+        sendMessage: async function(message) {
+            // We use a custom send message function, so that we can maintain reliable connection with the
+            // websocket server.
+            if (this.socket.readyState !== this.socket.OPEN) {
+                try {
+                    await this.waitForOpenConnection(this.socket)
+                    this.socket.send(message)
+                } catch (err) { console.error(err) }
+            } else {
+                this.socket.send(message)
+            }
+        },
+        waitForOpenConnection: function() {
+            // We use this to measure how many times we have tried to connect to the websocket server
+            // If it fails, it throws an error.
+            return new Promise((resolve, reject) => {
+                const maxNumberOfAttempts = 10
+                const intervalTime = 200 
 
-        }
-       /*  changeMicrophoneState() {
-            this.isMicOn = !this.isMicOn;
-        } */
-    }, 
+                let currentAttempt = 0
+                const interval = setInterval(() => {
+                    if (currentAttempt > maxNumberOfAttempts - 1) {
+                        clearInterval(interval)
+                        reject(new Error('Maximum number of attempts exceeded.'));
+                    } else if (this.socket.readyState === this.socket.OPEN) {
+                        clearInterval(interval)
+                        resolve()
+                    }
+                    currentAttempt++
+                }, intervalTime)
+            })
+        },
     /* computed: {
         micBtnTitle() {
             if (this.isMicOn === true){
@@ -67,6 +101,8 @@ export default{
         }
     } */
 }
+}
+
 </script>
 
 <style>
