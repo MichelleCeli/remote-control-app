@@ -8,7 +8,10 @@
     :stream="stream"
     :socket="socket"
     :therapistName="therapistName"></psychological-education>
-    <exposure-scenario v-else-if="sessionState === 'exposure-scenario'" @end-session="switchScene"></exposure-scenario>
+    <exposure-scenario v-else-if="sessionState === 'exposure-scenario'" 
+    :stream="stream"
+    :socket="socket"
+    @end-session="switchScene"></exposure-scenario>
     <session-history v-else :notes-from-session="this.notes"></session-history>
 
 </template>
