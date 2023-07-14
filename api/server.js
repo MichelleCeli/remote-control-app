@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 
         } else if(typeof message.type !== undefined){
 
-            if(message.type == "Session Information" || message.type == "Trigger Audio" || message.type == "Switch To Exposure"){
+            if(message.type == "Session Information" || message.type == "Trigger Audio" || message.type == "Switch To Exposure" || message.type == "Start Exposure"){
 
                 message = JSON.stringify(message);
                 aWss.clients.forEach(function (client) {

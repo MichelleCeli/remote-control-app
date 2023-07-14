@@ -60,6 +60,9 @@ export default {
     methods: {
         startActivity() {
             this.activityIsRunning = true;
+            this.sendMessage(JSON.stringify({
+                "type" : "Start Exposure",         
+            }));
         },
         pauseActivity() {
             this.activityIsPaused = true;
