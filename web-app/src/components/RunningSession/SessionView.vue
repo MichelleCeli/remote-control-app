@@ -7,7 +7,8 @@
     @start-pe-scene="$emit('startPeScene')"
     :stream="stream"
     :socket="socket"
-    :therapistName="therapistName"></psychological-education>
+    :therapistName="therapistName"
+    :scenarioTitle="scenarioTitle"></psychological-education>
     <exposure-scenario v-else-if="sessionState === 'exposure-scenario'" 
     :stream="stream"
     :socket="socket"

@@ -8,7 +8,7 @@
             <v-img width="480" height="360" cover :src="stream" class="mr-4"></v-img>
         </v-col>
         <v-col>
-            <div id="dialog01">
+            <div id="dialog01" v-if="scenarioTitle == 'Dog Sleeping' && sceneRunning">
             <v-btn @click="triggerAudio('T1')">T1</v-btn>
             <v-btn @click="triggerAudio('T2')">T2</v-btn>
             <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
@@ -19,6 +19,51 @@
             <v-btn @click="triggerAudio('T4')">T4</v-btn>
             <v-btn @click="triggerAudio('T4A')">T4A_JA</v-btn>
             <v-btn @click="triggerAudio('T4B')">T4B_NEIN</v-btn>
+            <v-btn @click="triggerAudio('T4B2')">T4B_NEIN_2</v-btn>
+            </div>
+
+            <div id="dialog02" v-else-if="scenarioTitle == 'Dog Sniffing' && sceneRunning">
+            <v-btn @click="triggerAudio('T1')">T1</v-btn>
+            <v-btn @click="triggerAudio('T1A')">T1A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T1B')">T1B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T2')">T2</v-btn>
+            <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T2B')">T2B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T3')">T3</v-btn>
+            <v-btn @click="triggerAudio('T3A')">T3A_Ja</v-btn>
+            <v-btn @click="triggerAudio('T3B')">T3B_Nein</v-btn>
+            <v-btn @click="triggerAudio('T3B2')">T4B_NEIN_2</v-btn>
+            </div>
+
+            <div id="dialog03" v-else-if="scenarioTitle == 'Dog Stretching' && sceneRunning">
+            <v-btn @click="triggerAudio('T1')">T1</v-btn>
+            <v-btn @click="triggerAudio('T1A')">T1A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T1B')">T1B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T2')">T2</v-btn>
+            <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T2B')">T2B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T3')">T3</v-btn>
+            <v-btn @click="triggerAudio('T3A')">T3A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T3B')">T3B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T4')">T4</v-btn>
+            <v-btn @click="triggerAudio('T4A')">T4_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T4B')">T4_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T5A')">T5_Ja</v-btn>
+            <v-btn @click="triggerAudio('T5B')">T5_Nein</v-btn>
+            <v-btn @click="triggerAudio('T5B2')">T5_Nein_2</v-btn>
+            </div>
+
+            <div id="dialog04" v-else-if="scenarioTitle == 'Dog Active' && sceneRunning">
+            <v-btn @click="triggerAudio('T1')">T1</v-btn>
+            <v-btn @click="triggerAudio('T1A')">T1A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T1B')">T1B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T2')">T2</v-btn>
+            <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
+            <v-btn @click="triggerAudio('T2B')">T2B_Falsch</v-btn>
+            <v-btn @click="triggerAudio('T3')">T3</v-btn>
+            <v-btn @click="triggerAudio('T4')">T3</v-btn>
+            <v-btn @click="triggerAudio('T4A')">T3A_Ja</v-btn>
+            <v-btn @click="triggerAudio('T4B')">T3B_Nein</v-btn>
             <v-btn @click="triggerAudio('T4B2')">T4B_NEIN_2</v-btn>
             </div>
             
@@ -40,7 +85,7 @@
 <script>
 
 export default{
-    props: ['stream', 'socket', 'therapistName'],
+    props: ['stream', 'socket', 'therapistName', 'scenario-title'],
     emits: ['switchToExposure', 'startPeScene'],
     data() {
         return {
