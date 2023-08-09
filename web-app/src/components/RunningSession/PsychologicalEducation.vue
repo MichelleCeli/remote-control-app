@@ -61,9 +61,9 @@
             <v-btn @click="triggerAudio('T2A')">T2A_Richtig</v-btn>
             <v-btn @click="triggerAudio('T2B')">T2B_Falsch</v-btn>
             <v-btn @click="triggerAudio('T3')">T3</v-btn>
-            <v-btn @click="triggerAudio('T4')">T3</v-btn>
-            <v-btn @click="triggerAudio('T4A')">T3A_Ja</v-btn>
-            <v-btn @click="triggerAudio('T4B')">T3B_Nein</v-btn>
+            <v-btn @click="triggerAudio('T4')">T4</v-btn>
+            <v-btn @click="triggerAudio('T4A')">T4A_Ja</v-btn>
+            <v-btn @click="triggerAudio('T4B')">T4B_Nein</v-btn>
             <v-btn @click="triggerAudio('T4B2')">T4B_NEIN_2</v-btn>
             </div>
             
