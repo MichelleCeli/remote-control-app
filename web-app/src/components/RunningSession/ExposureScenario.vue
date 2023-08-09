@@ -25,11 +25,11 @@
                 <v-textarea label="Notes:" v-model="notes" style="max-width: 700px"></v-textarea>
             </v-col>
             <v-col class="d-flex flex-column">
-                <v-btn class="me-auto" v-if="!activityIsRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'"
-                    @click="startActivity">START ACTIVITY</v-btn>
+                <!-- <v-btn class="me-auto" v-if="!activityIsRunning" theme="dark" :color="'rgba(0, 200, 81, 1)'"
+                    @click="startActivity">START ACTIVITY</v-btn> -->
                 <!-- <v-btn class="me-auto" v-else-if="activityIsRunning && !activityIsPaused" @click="pauseActivity">PAUSE ACTIVITY</v-btn> -->
-                <v-btn class="me-auto" v-if="activityIsPaused" @click="continueActivity">CONTINUE ACTIVITY</v-btn>
-                <v-btn theme="dark" color="rgba(255, 0, 0, 1)" class="me-auto mt-3" v-if="activityIsRunning" @click="endSession">END SESSION</v-btn>
+                <!-- <v-btn class="me-auto" v-if="activityIsPaused" @click="continueActivity">CONTINUE ACTIVITY</v-btn> -->
+                <v-btn theme="dark" color="rgba(255, 0, 0, 1)" class="me-auto mt-3" @click="endSession">END SESSION</v-btn>
             </v-col>
         </v-row>
     </v-container>
@@ -71,7 +71,8 @@ export default {
             this.activityIsPaused = false;
         },
         endSession() {
-            this.$emit('endSession', this.notes);
+            /* this.$emit('endSession', this.notes); */
+            this.$router.push('/');
         },
         sendMessage: async function(message) {
             // We use a custom send message function, so that we can maintain reliable connection with the
